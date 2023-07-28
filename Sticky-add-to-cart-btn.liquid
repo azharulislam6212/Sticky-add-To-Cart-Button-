@@ -1,0 +1,49 @@
+<script>
+  if ( $(window).width() < 767 ) {
+    $(window).scroll(function() {
+        var top_of_element = $("#default-button").offset().top;
+        var bottom_of_element = $("#default-button").offset().top + $("#default-button").outerHeight();
+        var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
+        var top_of_screen = $(window).scrollTop();
+    
+        if ((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)){
+            // the element is visible, do something
+            $("body").removeClass('show-sticky');
+            // $("#default-button").show();
+            $("#sticky-buttons").css('display','none');
+            
+        } else {
+            $("body").addClass('show-sticky');
+            // $("#default-button").hide();
+            $("#sticky-buttons").css('display','block');
+        }
+    }); 
+}
+
+</script>
+<style>
+.default-btn{
+  position: relative;
+}
+
+
+#sticky-button {
+  display: none;
+}
+
+div#sticky-buttons {
+  position: fixed;
+  background-color: #fff;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  padding: 15px;
+  z-index: 999;
+  display: none;
+}
+
+
+.show-sticky #sticky-buttons {
+  display: block;
+}
+</style>
